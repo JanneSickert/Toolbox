@@ -1,4 +1,5 @@
 function startGenerateRandomString(parameterDocument) {
+
   function CreateRandomString() {
 
     var LETTERS = "ABCDEFGHIJKLNMOPQRSTUVWXYZ"
@@ -7,6 +8,7 @@ function startGenerateRandomString(parameterDocument) {
     var SONDERZEICHEN_LEN = SONDERZEICHEN.length
     this.s = []
     this.words = []
+    
     this.selection = {
         grossbuchstaben: true,
         kleinbuchstaben: true,
@@ -59,6 +61,32 @@ function startGenerateRandomString(parameterDocument) {
       }
       return words
     }
+    
+    this.askForValidChars = () => {
+    	var opts = ""
+    	var optsObject = Object.keys(selection)
+    	for (var i = 0; i < 4; i++) {{
+    	    opts += "" + i + " : " + optsObject[i] + "\n"
+    	}
+    	const ASK = opts + "Gebe 1 oder 0 für die oberen optionen aus." + "\n"
+    	"Lasse das Feld lehr um alle Zeichen zu verwenden"
+    	var quest = prompt(ASK)
+    	if (quest == "") {
+    	    return
+    	}
+    	var bool = []
+    	for (var i = 0; i < 4; i++) {
+    	    if (quest[i] == "0") {
+    	        bool.push(false)
+    	    } else {
+    	    	bool.push(true)
+    	    }
+    	}
+    	this.selection.grossbuchstaben = bool[0]
+        this.selection.kleinbuchstaben = bool[1]
+        this.selection.zahlen = bool[2]
+        this.selection.sonderzeichen = bool[3]
+    }
   }
 
   /**
@@ -67,6 +95,7 @@ function startGenerateRandomString(parameterDocument) {
   var executeRandomString = (theDocument) => {
     var random_string_generator
     random_string_generator = new CreateRandomString()
+    random_string_generator.askForValidChars()
     random_string_generator.initCharset()
     var arr = random_string_generator.generateRandomStrings(100)
     theDocument.write("<h1>CreateRandomString</h1>")
