@@ -64,8 +64,8 @@ function startGenerateRandomString(parameterDocument) {
     
     this.askForValidChars = () => {
     	var opts = ""
-    	var optsObject = Object.keys(selection)
-    	for (var i = 0; i < 4; i++) {{
+    	var optsObject = Object.keys(this.selection)
+    	for (var i = 0; i < 4; i++) {
     	    opts += "" + i + " : " + optsObject[i] + "\n"
     	}
     	const ASK = opts + "Gebe 1 oder 0 für die oberen optionen aus." + "\n"
