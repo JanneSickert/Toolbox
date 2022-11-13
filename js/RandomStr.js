@@ -14,7 +14,7 @@ function startGenerateRandomString(parameterDocument) {
         kleinbuchstaben: true,
         zahlen: true,
         sonderzeichen: true,
-        anzahlZeichen: 35
+        anzahlZeichen: parseInt(prompt("Anzahl Zeichen"))
     }
     theDocument = null
 
