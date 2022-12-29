@@ -1,5 +1,9 @@
-function main(pDocument) {
-    const NAME_LIST = ["Path Converter", "Random String", "Math Print"]
+function init(pDocument, plocalStorage) {
+    myLinks = new MyLinks(pDocument, localStorage)
+}
+
+function select(pDocument, plocalStorage) {
+    const NAME_LIST = ["Path Converter", "Random String", "Math Print", "Links"]
     var quest = "Select a number \n\n"
     for (var i = 0; i < NAME_LIST.length; i++) {
         if (i == NAME_LIST.length - 1) {
@@ -19,5 +23,16 @@ function main(pDocument) {
         case 2:
             startMathPrint(pDocument)
             break
+        case 3:
+            startLink(pDocument, plocalStorage)
+            break
+        default:
+            alert("Ungültige Eingabe: " + input)
+            select(pDocument, plocalStorage)
     }
+}
+
+function main(pDocument, plocalStorage) {
+    init(pDocument, plocalStorage)
+    select(pDocument, plocalStorage)
 }
